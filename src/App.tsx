@@ -40,9 +40,29 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<Landing championQuery={championQuery} setChampionQuery={setChampionQuery} />} />
-          <Route path="/explore" element={<Explore champions={champions} championQuery={championQuery} setChampionQuery={setChampionQuery} />} />
-          <Route path="/champion-info/:champ_id" element={<ChampionInfo latestVersion={latestVersion} />} />
+          <Route
+            path="/"
+            element={
+              <Landing
+                championQuery={championQuery}
+                setChampionQuery={setChampionQuery}
+              />
+            }
+          />
+          <Route
+            path="/explore"
+            element={
+              <Explore
+                champions={champions}
+                championQuery={championQuery}
+                setChampionQuery={setChampionQuery}
+              />
+            }
+          />
+          <Route
+            path="/champion-info/:champ_id"
+            element={<ChampionInfo latestVersion={latestVersion} />}
+          />
         </Routes>
       </div>
     </Router>
