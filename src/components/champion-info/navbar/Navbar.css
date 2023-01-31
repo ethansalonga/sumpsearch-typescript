@@ -1,0 +1,9 @@
+.championInfo__navbar {
+  height: 104px;
+  padding: 28px 15px;
+  background-color: #6163a0;
+  align-items: center;
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+}

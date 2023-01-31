@@ -1,0 +1,247 @@
+.championInfo__main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 50px;
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 0;
+  font-size: 32px;
+  cursor: pointer;
+  color: #324b4d;
+  transition: all 100ms ease-in-out;
+}
+
+.backButton:hover {
+  opacity: 0.6;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #324b4d;
+}
+
+.championImage__container {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.championImage {
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 30px 0 rgb(0, 0, 0, 0.45);
+  max-width: 330px;
+  max-height: 560px;
+  width: auto;
+  height: auto;
+}
+
+.championInfo__container {
+  width: 66%;
+}
+
+.championInfo__primaryInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 8px;
+}
+
+.championRoles {
+  font-size: 20px;
+  font-weight: 500;
+  color: #324b4d;
+}
+
+.championName {
+  font-size: 32px;
+  font-weight: 700;
+  color: #324b4d;
+}
+
+.championTitle {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.championInfo__lore {
+  margin-bottom: 16px;
+}
+
+.championInfo__stats {
+  margin-bottom: 16px;
+}
+
+.championInfo__stat {
+  display: flex;
+  padding: 0;
+}
+
+.stats__icon {
+  min-width: 16px;
+  min-height: 16px;
+}
+
+.championInfo__statsText {
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+.championInfo__allyTips {
+  margin-bottom: 16px;
+}
+
+.championInfo__tip {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.contentContainer__abilities {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.championInfo__abilityPassive {
+  display: flex;
+  margin: 12px 0 20px 0;
+}
+
+.championInfo__ability {
+  display: flex;
+  width: 48%;
+}
+
+.championInfo__abilityImg {
+  border-radius: 6px;
+  margin-right: 8px;
+  width: 64px;
+  height: 64px;
+}
+
+.championInfo__abilityInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.championInfo__abilityName {
+  font-weight: 600;
+  color: #324b4d;
+}
+
+.championInfo__abilityText {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.championInfo__abilities {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fefefe !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fefefe !important;
+}
+
+.skinsSwiper {
+  box-shadow: 0px 20px 30px 0 rgb(0, 0, 0, 0.6);
+}
+
+.skinName {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #324b4d;
+}
+
+@media (max-width: 320px) {
+  .championName {
+    font-size: 24px;
+  }
+
+  .championTitle {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .championInfo__main {
+    margin-top: 56px;
+  }
+
+  .championInfo__primaryInfo {
+    flex-direction: column;
+  }
+
+  .backButton {
+    top: -44px;
+    left: 8px;
+  }
+
+  .championImage__container {
+    width: 100%;
+  }
+
+  .championImage {
+    max-width: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  .championInfo__container {
+    width: 100%;
+  }
+
+  .championInfo__ability {
+    width: 100%;
+  }
+
+  .championInfo__primaryInfo {
+    align-items: start;
+  }
+}
+
+@media (max-width: 768px) {
+  .backButton {
+    left: 16px;
+  }
+
+  .contentContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .championName {
+    margin-top: 20px;
+  }
+
+  .championTitle {
+    font-size: 18px;
+  }
+
+  .championInfo__stat {
+    display: inline;
+  }
+}

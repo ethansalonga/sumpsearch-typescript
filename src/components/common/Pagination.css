@@ -1,0 +1,50 @@
+.pageButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0 25%;
+  transition: 200ms opacity ease-in-out;
+}
+
+.pageButton:hover,
+.page-link:hover {
+  opacity: 0.9;
+}
+
+.pageButton {
+  background-color: #324b4d;
+  color: #fff;
+  height: 44px;
+  width: 200px;
+  border-radius: 12px;
+  font-size: 18px;
+  transition: 200ms opacity ease-in-out;
+}
+
+.pageButton--disabled {
+  cursor: auto;
+  background-color: #e0e0e0;
+  color: #828282;
+}
+
+.pageNumbers {
+  display: flex;
+  justify-content: center;
+  gap: 0 32px;
+  width: 100%;
+}
+
+.page-link {
+  background-color: #324b4d;
+  color: #fff;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 22px;
+  transition: 200ms all ease-in-out;
+}
+
+.currentPage {
+  background-color: #9696d8;
+}
