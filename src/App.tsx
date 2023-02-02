@@ -6,9 +6,9 @@ import ChampionInfo from "./pages/ChampionInfo"
 import "./App.css"
 
 function App() {
-  const [championQuery, setChampionQuery] = useState("")
-  const [latestVersion, setLatestVersion] = useState("")
-  const [champions, setChampions] = useState([])
+  const [championQuery, setChampionQuery] = useState<string>("")
+  const [latestVersion, setLatestVersion] = useState<string>("")
+  const [champions, setChampions] = useState<any[]>([])
 
   useEffect(() => {
     getLatestVersion()
@@ -20,7 +20,7 @@ function App() {
     }
   }, [latestVersion])
 
-  const getLatestVersion = async () => {
+  const getLatestVersion: () => void = async () => {
     const version = await fetch(
       "https://ddragon.leagueoflegends.com/api/versions.json"
     )
@@ -28,7 +28,7 @@ function App() {
     setLatestVersion((await version.json())[0])
   }
 
-  const getChampions = async () => {
+  const getChampions: () => void  = async () => {
     const champions = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion.json`
     )

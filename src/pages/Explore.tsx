@@ -1,12 +1,22 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, FC } from "react"
 import Navbar from "../components/explore/navbar/Navbar"
 import Search from "../components/explore/search/Search"
 import { ChakraProvider } from "@chakra-ui/react"
 
-function Explore({ champions, championQuery, setChampionQuery }) {
-  const [filteredChampions, setFilteredChampions] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
+type ExploreProps = {
+  champions: any[]
+  championQuery: string
+  setChampionQuery: (champion: string) => void
+}
+
+const Explore: FC<ExploreProps> = ({
+  champions,
+  championQuery,
+  setChampionQuery,
+}) => {
+  const [filteredChampions, setFilteredChampions] = useState<any[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   useEffect(() => {
     if (championQuery) {
