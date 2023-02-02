@@ -36,10 +36,6 @@ function Main({ champion }) {
     }
   }
 
-  useEffect(() => {
-    console.log(champion)
-  }, [champion])
-
   return (
     <div className="championInfo__main">
       {champion && (

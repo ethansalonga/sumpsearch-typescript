@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, FC } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../components/champion-info/navbar/Navbar"
 import Main from "../components/champion-info/main/Main"
 import { ChakraProvider } from "@chakra-ui/react"
 
-function ChampionInfo({ latestVersion }) {
+type ChampionInfoProps = {
+  latestVersion: string
+}
+
+const ChampionInfo: FC<ChampionInfoProps> = ({ latestVersion }) => {
   const params = useParams()
   const { champ_id } = params
 
-  const [champion, setChampion] = useState()
+  const [champion, setChampion] = useState<(args: {}) => void>()
 
   useEffect(() => {
     if (latestVersion) {
@@ -21,7 +25,7 @@ function ChampionInfo({ latestVersion }) {
       `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion/${champ_id}.json`
     )
     const { data } = await champions.json()
-    setChampion(Object.values(data)[0])
+    setChampion(Object.values<(args: {}) => void>(data)[0])
   }
 
   return (
