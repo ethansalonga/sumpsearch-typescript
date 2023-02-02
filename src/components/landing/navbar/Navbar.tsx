@@ -8,19 +8,19 @@ function Navbar() {
   const toggleModal = () => {
     if (isModalOpen) {
       isModalOpen = false
-      document.querySelector(".close-btn").classList.remove("show")
+      document!.querySelector(".close-btn")!.classList.remove("show")
       setTimeout(() => {
-        document.querySelector(".bento-menu").classList.remove("hide-anim-out")
-        document.querySelector(".bento-menu").classList += " show-anim-in"
-        document.querySelector(".showMenu").classList.remove("active")
-      }, [800])
+        document!.querySelector(".bento-menu")!.classList.remove("hide-anim-out")
+        document!.querySelector(".bento-menu")!.classList.add("show-anim-in")
+        document!.querySelector(".showMenu")!.classList.remove("active")
+      }, 800)
       return
     }
     isModalOpen = true
-    document.querySelector(".bento-menu").classList.remove("show-anim-in")
-    document.querySelector(".bento-menu").classList += " hide-anim-out"
-    document.querySelector(".close-btn").classList += " show"
-    document.querySelector(".showMenu").classList += " active"
+    document!.querySelector(".bento-menu")!.classList.remove("show-anim-in")
+    document!.querySelector(".bento-menu")!.classList.add("hide-anim-out")
+    document!.querySelector(".close-btn")!.classList.add("show")
+    document!.querySelector(".showMenu")!.classList.add("active")
   }
 
   const contactAlert = () => {

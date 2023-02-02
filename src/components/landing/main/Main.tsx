@@ -1,21 +1,27 @@
+import { FC } from "react"
 import { useNavigate } from "react-router-dom"
 import LandingImg from "../../../assets/landing-img.png"
 import ArcaneJinxImg from "../../../assets/arcane-jinx.png"
 import "./Main.css"
 
-function Main({ championQuery, setChampionQuery }) {
+type MainProps = {
+  championQuery: string
+  setChampionQuery: (champion: string) => void
+}
+
+const Main: FC<MainProps> = ({ championQuery, setChampionQuery }) => {
   const navigate = useNavigate()
 
   const toggleLoading = () => {
-    document.querySelector(".btn-search").classList.remove("not-loading")
-    document.querySelector(".btn-search").classList += " loading"
+    document!.querySelector(".btn-search")!.classList.remove("not-loading")
+    document!.querySelector(".btn-search")!.classList.add("loading")
   }
 
   const handleSearch = () => {
     toggleLoading()
     setTimeout(() => {
       navigate("/explore")
-    }, [2000])
+    }, 2000)
   }
 
   return (
