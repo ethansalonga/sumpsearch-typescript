@@ -1,3 +1,4 @@
+import { FC } from "react"
 import { Progress } from "@chakra-ui/react"
 import {
   RiSwordFill,
@@ -8,7 +9,19 @@ import {
 } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
 
-function ChampionCard({
+type ChampionProps = {
+  id: string
+  image: string
+  name: string
+  title: string
+  attack: number
+  defense: number
+  magic: number
+  difficulty: number
+  roles: string[]
+}
+
+const ChampionCard: FC<ChampionProps> = ({
   id,
   image,
   name,
@@ -18,8 +31,8 @@ function ChampionCard({
   magic,
   difficulty,
   roles,
-}) {
-  const progressBarMultiplier = 10
+}) => {
+  const progressBarMultiplier: number = 10
   const navigate = useNavigate()
 
   return (

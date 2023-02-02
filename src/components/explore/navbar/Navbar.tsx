@@ -1,41 +1,52 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, FC } from "react"
 import { Link } from "react-router-dom"
 import Logo from "../../../assets/sumpsearch-logo.svg"
 import "./Navbar.css"
 
-function Navbar({
+type NavbarProps = {
+  champions: any[]
+  championQuery: string
+  setChampionQuery: (args: string) => void
+  setLoading: (args: boolean) => void
+  setFilteredChampions: (args: any[]) => void
+  setCurrentPage: (args: number) => void
+}
+
+const Navbar: FC<NavbarProps> = ({
   champions,
   championQuery,
   setChampionQuery,
   setLoading,
   setFilteredChampions,
   setCurrentPage,
-}) {
-  let isModalOpen = false
+}) => {
+  let isModalOpen: boolean = false
 
-  const toggleModal = () => {
+  const toggleModal: () => void = () => {
     if (isModalOpen) {
       isModalOpen = false
-      document.querySelector(".close-btn").classList.remove("show")
+      document!.querySelector(".close-btn")!.classList.remove("show")
       setTimeout(() => {
-        document.querySelector(".bento-menu").classList.remove("hide-anim-out")
-        document.querySelector(".bento-menu").classList += " show-anim-in"
-        document.querySelector(".showMenu").classList.remove("active")
-      }, [800])
+        document!
+          .querySelector(".bento-menu")!
+          .classList.remove("hide-anim-out")
+        document!.querySelector(".bento-menu")!.classList.add("show-anim-in")
+        document!.querySelector(".showMenu")!.classList.remove("active")
+      }, 800)
       return
     }
     isModalOpen = true
-    document.querySelector(".bento-menu").classList.remove("show-anim-in")
-    document.querySelector(".bento-menu").classList += " hide-anim-out"
-    document.querySelector(".close-btn").classList += " show"
-    document.querySelector(".showMenu").classList += " active"
+    document!.querySelector(".bento-menu")!.classList.remove("show-anim-in")
+    document!.querySelector(".bento-menu")!.classList.add("hide-anim-out")
+    document!.querySelector(".close-btn")!.classList.add("show")
+    document!.querySelector(".showMenu")!.classList.add("active")
   }
 
-  const contactAlert = () => {
+  const contactAlert: () => void = () => {
     alert("This feature has not been implemented for this project.")
   }
 
-  const handleSearch = () => {
+  const handleSearch: () => void = () => {
     setCurrentPage(1)
     setLoading(true)
     setTimeout(() => {
@@ -47,18 +58,17 @@ function Navbar({
         )
       )
       setLoading(false)
-    }, [2000])
+    }, 2000)
   }
 
-  function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window
+  const getWindowDimensions: () => { width: number } = () => {
+    const { innerWidth: width } = window
     return {
       width,
-      height,
     }
   }
 
-  function useWindowDimensions() {
+  const useWindowDimensions: () => { width: number } = () => {
     const [windowDimensions, setWindowDimensions] = useState(
       getWindowDimensions()
     )
@@ -75,7 +85,7 @@ function Navbar({
     return windowDimensions
   }
 
-  const { height, width } = useWindowDimensions()
+  const { width } = useWindowDimensions()
 
   return (
     <div className="explore__navbar flex flex-col">

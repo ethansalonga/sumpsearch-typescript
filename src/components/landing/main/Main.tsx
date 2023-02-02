@@ -12,12 +12,12 @@ type MainProps = {
 const Main: FC<MainProps> = ({ championQuery, setChampionQuery }) => {
   const navigate = useNavigate()
 
-  const toggleLoading = () => {
+  const toggleLoading: () => void = () => {
     document!.querySelector(".btn-search")!.classList.remove("not-loading")
     document!.querySelector(".btn-search")!.classList.add("loading")
   }
 
-  const handleSearch = () => {
+  const handleSearch: () => void = () => {
     toggleLoading()
     setTimeout(() => {
       navigate("/explore")

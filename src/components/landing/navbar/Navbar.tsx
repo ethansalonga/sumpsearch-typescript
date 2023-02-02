@@ -5,7 +5,7 @@ import "./Navbar.css"
 function Navbar() {
   let isModalOpen = false
 
-  const toggleModal = () => {
+  const toggleModal: () => void = () => {
     if (isModalOpen) {
       isModalOpen = false
       document!.querySelector(".close-btn")!.classList.remove("show")
@@ -23,7 +23,7 @@ function Navbar() {
     document!.querySelector(".showMenu")!.classList.add("active")
   }
 
-  const contactAlert = () => {
+  const contactAlert: () => void = () => {
     alert("This feature has not been implemented for this project.")
   }
 

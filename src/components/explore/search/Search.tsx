@@ -1,10 +1,21 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, FC } from "react"
 import ChampionCard from "./ChampionCard"
 import Pagination from "../../common/Pagination"
 import { RiArrowDownSLine } from "react-icons/ri"
 import "./Search.css"
 
-function Search({
+type SearchProps = {
+  champions: any[]
+  filteredChampions: any[]
+  setFilteredChampions: (args: any[]) => void
+  loading: boolean
+  setLoading: (args: boolean) => void
+  currentPage: number
+  setCurrentPage: (args: number) => void
+  setChampionQuery: (args: string) => void
+}
+
+const Search: FC<SearchProps> = ({
   champions,
   filteredChampions,
   setFilteredChampions,
@@ -13,10 +24,10 @@ function Search({
   currentPage,
   setCurrentPage,
   setChampionQuery,
-}) {
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const [selectedRole, setSelectedRole] = useState("Select role")
-  const dropDownRef = useRef(null)
+}) => {
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false)
+  const [selectedRole, setSelectedRole] = useState<string>("Select role")
+  const dropDownRef = useRef<null>(null)
 
   const roles = [
     { id: "Assassin" },
@@ -28,39 +39,39 @@ function Search({
   ]
 
   // PAGINATION //
-  const [champsPerPage] = useState(12)
+  const [champsPerPage] = useState<number>(12)
 
-  const indexOfLastChamp = currentPage * champsPerPage
-  const indexOfFirstChamp = indexOfLastChamp - champsPerPage
-  const currentChamps = filteredChampions.slice(
+  const indexOfLastChamp: number = currentPage * champsPerPage
+  const indexOfFirstChamp: number = indexOfLastChamp - champsPerPage
+  const currentChamps: any[] = filteredChampions.slice(
     indexOfFirstChamp,
     indexOfLastChamp
   )
 
-  const paginate = pageNumber => setCurrentPage(pageNumber)
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
   // END PAGINATION //
 
   useEffect(() => {
     setFilteredChampions(champions)
   }, [])
 
-  const handleViewAll = () => {
+  const handleViewAll: () => void = () => {
     setChampionQuery("")
     setLoading(true)
     setFilteredChampions(champions)
     setSelectedRole("Select role")
     setTimeout(() => {
       setLoading(false)
-    }, [500])
+    }, 500)
   }
 
-  const openHandler = () => {
+  const openHandler: () => void = () => {
     setDropdownOpen(!dropdownOpen)
   }
 
-  const selectHandler = id => {
+  const selectHandler: (id: string) => void = id => {
     const selected = roles.find(el => el.id === id)
-    setSelectedRole(selected.id)
+    setSelectedRole(selected!.id)
     setDropdownOpen(false)
     setCurrentPage(1)
     setFilteredChampions(
