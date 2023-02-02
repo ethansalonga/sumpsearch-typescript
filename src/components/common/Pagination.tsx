@@ -1,12 +1,21 @@
+import {FC} from "react"
 import "./Pagination.css"
 
-function Pagination({
+type PaginationProps = {
+  champsPerPage: number
+  totalChamps: number
+  paginate: (args: number) => void
+  currentPage: number
+  setCurrentPage: (args: any) => void
+}
+
+const Pagination: FC<PaginationProps> = ({
   champsPerPage,
   totalChamps,
   paginate,
   currentPage,
   setCurrentPage,
-}) {
+}) => {
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalChamps / champsPerPage); i++) {
@@ -23,7 +32,7 @@ function Pagination({
           } pageButton`}
           onClick={() => {
             if (currentPage !== 1) {
-              setCurrentPage(prevState => prevState - 1)
+              setCurrentPage((prevState: any) => prevState - 1)
               window.scrollTo({
                 top: 340,
                 left: 0,
@@ -41,7 +50,7 @@ function Pagination({
           } pageButton`}
           onClick={() => {
             if (currentPage !== pageNumbers.length) {
-              setCurrentPage(prevState => prevState + 1)
+              setCurrentPage((prevState: any) => prevState + 1)
               window.scrollTo({
                 top: 340,
                 left: 0,

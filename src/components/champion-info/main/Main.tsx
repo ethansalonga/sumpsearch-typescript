@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { FC } from "react"
 import { useNavigate } from "react-router-dom"
 import { Progress } from "@chakra-ui/react"
 import {
@@ -15,15 +15,51 @@ import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 
-function Main({ champion }) {
-  const removeHtml = string => {
+type MainProps = {
+  champion: {
+    id: string
+    image: string
+    name: string
+    title: string
+    tags: string[]
+    lore: string
+    info: {
+      attack: number
+      defense: number
+      magic: number
+      difficulty: number
+    }
+    allytips: string[]
+    enemytips: string[]
+    passive: {
+      name: string
+      description: string
+      image: {
+        full: string
+      }
+    }
+    spells: {
+      id: string
+      name: string
+      description: string
+    }[]
+    skins: {
+      id: string
+      name: string
+      num: number
+    }[]
+  }
+}
+
+const Main: FC<MainProps> = ({ champion }) => {
+  const removeHtml: (string: string) => string = string => {
     return string.replace(/<\/?[^>]+(>|$)/g, "")
   }
 
   const navigate = useNavigate()
   const progressBarMultiplier = 10
 
-  const abilityKey = index => {
+  const abilityKey: (index: number) => string | undefined = index => {
     switch (index) {
       case 0:
         return "(Q)"
@@ -175,7 +211,7 @@ function Main({ champion }) {
             </div>
             <div className="championInfo__abilities">
               {champion.spells.map((ability, index) => (
-                <div className="championInfo__ability">
+                <div className="championInfo__ability" key={index}>
                   <img
                     src={`https://ddragon.leagueoflegends.com/cdn/12.22.1/img/spell/${ability.id}.png`}
                     className="championInfo__abilityImg"
@@ -208,7 +244,7 @@ function Main({ champion }) {
               className="skinsSwiper"
             >
               {champion.skins.map(skin => (
-                <SwiperSlide>
+                <SwiperSlide key={skin.num}>
                   <>
                     <div className="skinName">
                       {skin.name === "default" ? champion.name : skin.name}
