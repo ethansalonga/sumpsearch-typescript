@@ -315,7 +315,7 @@
 .championCard:hover {
   cursor: pointer;
   transition: 300ms scale ease-in-out;
-  scale: 1.1;
+  scale: 1.02;
 }
 
 .championCard__image {
@@ -397,6 +397,10 @@
 @media (min-width: 769px) {
   .championCard {
     width: 47%;
+  }
+
+  .championCard:hover {
+    scale: 1.05;
   }
 }
 
